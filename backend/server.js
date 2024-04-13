@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from 'dotenv';
+import cookieParser from "cookie-parser";
 dotenv.config();
 
 import userRoutes from './routes/userRoutes.js';
@@ -14,6 +15,8 @@ connectDB();
 app.use(express.json());
 // Middleware to parse form data
 app.use(express.urlencoded({ extended: true }));
+// Middleware to parse cookie
+app.use(cookieParser());
 
 // Calling api routes
 app.use("/api/users", userRoutes);
